@@ -15,7 +15,7 @@ This proposal is at stage 1 of [the TC39 process](https://tc39.github.io/process
 For `Number` values, there is [`parseInt(string, radix = 10)`](https://tc39.github.io/ecma262/#sec-parseint-string-radix) and [`Number.parseInt(string, radix = 10)`](https://tc39.github.io/ecma262/#sec-number.parseint), but its behavior is suboptimal:
 
 - It returns `NaN` instead of throwing a `SyntaxError` exception when `string` does not represent a number.
-- It returns `NaN` instead of throwing a `RangeError` exception when `radix` is not valid (i.e. `radix !== 0 && radix < 2` or `radix > 36`).
+- It returns `NaN` instead of throwing a `RangeError` exception when `radix` is not valid (i.e. `radix < 2` or `radix > 36`).
 - It accepts radix `0`, treating it as `10` instead, which does not make sense.
 - It ignores leading whitespace and trailing non-digit characters.
 - It supports hexadecimal integer literal prefixes `0x` and `0X` but lacks support for octal integer literal prefixes `0o` and `0O` or binary integer literal prefixes `0b` and `0B`, which is inconsistent.
@@ -137,4 +137,4 @@ Number.fromString(true, 32);
 
 ## Implementations
 
-* none yet
+* [core-js@3](https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/esnext.number.from-string.js)
